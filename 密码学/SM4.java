@@ -42,6 +42,7 @@ public class SM4 {
             0x18,0xf0,0x7d,0xec,0x3a,0xdc,0x4d,0x20,0x79,0xee,0x5f,0x3e,0xd7,0xcb,0x39,0x48
     };
 
+    private static int len;
 
     /**
      * 主加/解密函数
@@ -101,7 +102,7 @@ public class SM4 {
      * @param ori 源
      * @return des
      */
-    public static String bytesToHexString(byte[] ori) {
+    private static String bytesToHexString(byte[] ori) {
         StringBuilder des = new StringBuilder();
         //字符转换两位16进制字符
         for (byte b : ori) {
@@ -115,17 +116,20 @@ public class SM4 {
      * @param ori 源
      * @return bytes
      */
-    public static byte[] hexStringToBytes(String ori) {
-        ori = ori.substring(2);
-        int length = ori.length();
+    private static byte[] hexStringToBytes(String ori) {
+        StringBuilder str = new StringBuilder(ori.substring(2));
+        int length = ori.length() - 2;
         if(length > 32){
             System.out.println("传入 明文/秘钥 输入不符要求 !");
             System.exit(0);
+        }else {
+            //填充 0
+            str.append("0".repeat(Math.max(0, 32 - length)));
         }
-        byte[] des = new byte[length / 2];
+        byte[] des = new byte[16];
         //每两位合并
         for (int i = 0; i < des.length; i++) {
-            des[i] = (byte) Integer.parseInt(ori.substring(i * 2, i * 2 + 2), 16);
+            des[i] = (byte) Integer.parseInt(str.substring(i * 2, i * 2 + 2), 16);
         }
         return des;
     }
@@ -261,6 +265,7 @@ public class SM4 {
         System.out.print("请输入明文: ");
         String p = sc.next();
 
+        len = p.length();
         byte[] plaintext = hexStringToBytes(p);
 
         System.out.print("请输入密钥: ");
@@ -272,7 +277,7 @@ public class SM4 {
         System.out.println("加密结果: " + bytesToHexString(cipher));
         //解密
         byte[] decryptText = decrypt(cipher, key);
-        System.out.println("解密结果: " + bytesToHexString(decryptText));
+        System.out.println("解密结果: " + bytesToHexString(decryptText).substring(0, len));
     }
 
     public static void main(String[] args) {
