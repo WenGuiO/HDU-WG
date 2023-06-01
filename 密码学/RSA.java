@@ -59,7 +59,6 @@ public class RSA {
          */
 
         //Miller-Rabin素性检测
-        Random random = new Random();
         for (int i = 0; i < checkCount; i++) {
             //随机选取一个 a, add(BigInteger.ONE) +1, 确保a是一个正整数
             BigInteger a = new BigInteger(n.bitLength() - 1, random).add(BigInteger.ONE);
@@ -91,7 +90,7 @@ public class RSA {
     }
 
     /**
-     * 求最小公倍数
+     * 求最大公因数
      * @param a 参1
      * @param b 参2
      * @return 最小公倍数
