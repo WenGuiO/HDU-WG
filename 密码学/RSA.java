@@ -136,7 +136,6 @@ public class RSA {
     private static BigInteger generatePrimes(int bitLength){
         /*
         //方式1: 自定义随机生成
-        Random random = new Random();
         BigInteger p;
         do {
             p = new BigInteger(bitLength, random);
