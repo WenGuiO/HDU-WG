@@ -1,15 +1,15 @@
 #include "Teacher.h"
 #include "ReserveFile.h"
-void ReserveTeacherInformation(struct Teacher *pHead)  //±£´æÍË³ö 
+void ReserveTeacherInformation(struct Teacher *pHead)  //ä¿å­˜é€€å‡º 
 {
-	struct Teacher* pTem = pHead->next;    //´ÓÓĞÊı¾İµÄµÚ¶ş½Úµã¿ªÊ¼ 
-	FILE *fp = fopen("º¼µç½ÌÊ¦¹¤×Ê±í", "w+");
+	struct Teacher* pTem = pHead->next;    //ä»æœ‰æ•°æ®çš„ç¬¬äºŒèŠ‚ç‚¹å¼€å§‹ 
+	FILE *fp = fopen("æ•™å¸ˆå·¥èµ„è¡¨", "w+");
 	
 	if(fp == NULL)
 	{
 		system("cls");
 		printf("\n\n\n\t\t\t\t\t-------------------------\n");
-		printf("\t\t\t\t\t|       ±£´æÊ§°Ü        |\n"); 
+		printf("\t\t\t\t\t|       ä¿å­˜å¤±è´¥        |\n"); 
 		printf("\t\t\t\t\t-------------------------\n\n");
 	}
 	else
@@ -21,11 +21,11 @@ void ReserveTeacherInformation(struct Teacher *pHead)  //±£´æÍË³ö
 				pTem->allowance, pTem->livingall, pTem->telbill, pTem->waterelectricbill, pTem->roomcharge, 
 				pTem->incometax, pTem->sanitationfee, pTem->reservefund);
 			pTem = pTem->next;
-		}// ±éÀúÁ´±íÊä³öµ½ÎÄ¼ş 
+		}// éå†é“¾è¡¨è¾“å‡ºåˆ°æ–‡ä»¶ 
 		
 		system("cls");
 		printf("\n\n\n\t\t\t\t\t-------------------------\n");
-		printf("\t\t\t\t\t|       ±£´æ³É¹¦        |\n"); 
+		printf("\t\t\t\t\t|       ä¿å­˜æˆåŠŸ        |\n"); 
 		printf("\t\t\t\t\t-------------------------\n\n");
 	}
 	system("pause"); 
